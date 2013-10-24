@@ -1,17 +1,28 @@
 {
-  "name": "npm-bootstrap",
+  "name": "krauter",
   "version": "0.0.0",
-  "description": "bootstrap for my node/npm modules",
-  "main": "lib/index.js",
+  "description": "A minimal, fast & flexible url router.",
+  "main": "lib/krauter.js",
   "scripts": {
     "test": "make lint test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/netroy/npm-bootstrap.git"
+    "url": "git://github.com/netroy/krauter.git"
   },
   "keywords": [
+    "router",
+    "url",
+    "parser"
   ],
   "author": "NetRoY <aditya@netroy.in> (http://netroy.in/)",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netroy/krauter/issues"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "jshint": "~2.3.0",
+    "mocha": "~1.13.0"
+  }
 }
