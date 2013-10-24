@@ -4,11 +4,6 @@ var krauter = require(libpath + '/krauter');
 var chai = require('chai');
 var expect = chai.expect;
 
-// var spec = {
-//   'dA6f23/info': 'http://hakuna.com/dA6f23/info',
-//   '/dA6f23/info': 'http://hakuna.com/dA6f23/info'
-// };
-
 describe('url router', function () {
 
   var names = {
@@ -16,6 +11,8 @@ describe('url router', function () {
     'service2': 'matata.com',
   };
   var routes = {
+    '/': 'service1',
+    '': 'service1',
     '*': 'service2',
     'user/*': 'service1',
     ':user_id/info': 'service1',
@@ -28,10 +25,19 @@ describe('url router', function () {
     krauter.compile(routes, names);
   });
 
-  describe('leading slash', function () {
-    it('should be ignored', function () {
-      expect(krauter.route('dA6f23/info')).to.equal('http://hakuna.com/dA6f23/info');
-      expect(krauter.route('/A6f23/info')).to.equal('http://hakuna.com/A6f23/info');
-    });
+  it('should fallback to * route', function () {
+    expect(krauter.route('my/weird/url')).to.equal('http://matata.com/my/weird/url');
+  });
+
+  xit('should handle * sub routes', function () {
+    expect(krauter.route('user/12345')).to.equal('http://hakuna.com/user/12345');
+  });
+
+  it('should handle parameters', function () {
+    expect(krauter.route('dA6f23/info')).to.equal('http://hakuna.com/dA6f23/info');
+  });
+
+  it('should ignore leading slash', function () {
+    expect(krauter.route('dA6f23/info')).to.equal(krauter.route('/dA6f23/info'));
   });
 });
