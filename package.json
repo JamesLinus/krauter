@@ -1,6 +1,6 @@
 {
   "name": "krauter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A minimal, fast & flexible url router.",
   "main": "lib/krauter.js",
   "scripts": {
